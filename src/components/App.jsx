@@ -7,6 +7,8 @@ import { LoginView } from 'views/LoginView/LoginView';
 import { RegistrationView } from 'views/RegistrationView/RegistrationView';
 import { LayOut } from './Layout/Layout';
 import { getToken } from 'redux/auth/auth-selectors';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 //--------------------------------------------------------------------//
 //{name: 'Vova Roman', email: 'test@asd.com', password: 'test12345912'}
 const App = () => {
@@ -25,6 +27,7 @@ const App = () => {
           <Route path="contacts" element={<ContactsView />}></Route>
         </Route>
       </Routes>
+      <ToastContainer autoClose={2000} />
     </>
   );
 };
