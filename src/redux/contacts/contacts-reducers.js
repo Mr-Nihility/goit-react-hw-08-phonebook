@@ -1,4 +1,9 @@
-import { addUser, deleteUser, filterUser, getUsers } from './contscts-actions';
+import {
+  addUser,
+  deleteUser,
+  filterUser,
+  getUsers,
+} from './contscts-operations';
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 //----------------------------------------------------------------//

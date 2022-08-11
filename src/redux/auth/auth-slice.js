@@ -30,7 +30,7 @@ const authSlice = createSlice({
       state.isLogin = false;
     },
     [getRefresh.fulfilled]: (state, { payload }) => {
-      state.user = payload.user;
+      state.user = payload;
       state.isLogin = true;
     },
   },

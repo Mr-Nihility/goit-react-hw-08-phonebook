@@ -6,15 +6,20 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { Outlet, NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getIsLogin, getUserName } from 'redux/auth/auth-selectors';
+import { logOut } from 'redux/auth/auth-operations';
 
 //------------------------------------------------------//
 
 function LayOut() {
   const isLogin = useSelector(getIsLogin);
   const name = useSelector(getUserName);
-  console.log(name, isLogin);
+  const dispatch = useDispatch();
+
+  const handlerLogout = () => {
+    dispatch(logOut());
+  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -36,7 +41,9 @@ function LayOut() {
             {isLogin && (
               <>
                 <b>Hello, {name} .Glad to see you!!!</b>
-                <Button color="inherit">LogOut</Button>
+                <Button color="inherit" onClick={handlerLogout}>
+                  LogOut
+                </Button>
               </>
             )}
             {!isLogin && (

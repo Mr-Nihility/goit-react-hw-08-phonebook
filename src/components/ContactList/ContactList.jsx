@@ -1,20 +1,28 @@
 import { ContactItem } from './ContactItem/ContactItem';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser } from 'redux/contacts/contscts-actions';
+import { deleteUser, getUsers } from 'redux/contacts/contscts-operations';
 import {
   filterSelector,
   itemsSelector,
 } from 'redux/contacts/contacts-selectors';
+import { useEffect } from 'react';
 //----------------------------------------------------------------//
 
 const ContactList = () => {
   const items = useSelector(itemsSelector);
   const filter = useSelector(filterSelector);
   const dispatch = useDispatch();
-  const contacts = items.filter(({ name }) =>
+  const contacts = items?.filter(({ name }) =>
     name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
   );
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  const deleteContact = id => {
+    dispatch(deleteUser(id));
+  };
 
   return (
     <ul>
@@ -25,7 +33,7 @@ const ContactList = () => {
             id={id}
             name={name}
             phone={number}
-            onDelete={id => dispatch(deleteUser(id))}
+            onDelete={deleteContact}
           />
         );
       })}
