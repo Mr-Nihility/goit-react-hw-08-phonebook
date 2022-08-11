@@ -1,31 +1,31 @@
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { Form } from './Form/Form';
-import { Container } from './Container/Container';
+import { Route, Routes } from 'react-router-dom';
+import { ContactsView } from 'views/ContactsView/ContactsView';
+import { LoginView } from 'views/LoginView/LoginView';
+import { RegistrationView } from 'views/RegistrationView/RegistrationView';
+import { LayOut } from './Layout/Layout';
 
 //--------------------------------------------------------------------//
 
 const App = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      <Container title="Phonebook">
-        <Form />
-      </Container>
-      <Container title="Contacts">
-        <Filter />
-        <ContactList />
-      </Container>
-    </div>
+    <>
+      <Routes>
+        <Route path="/goit-react-hw-08-phonebook/" element={<LayOut />}>
+          <Route path="register" element={<RegistrationView />}></Route>
+          <Route path="login" element={<LoginView />}></Route>
+          <Route path="contacts" element={<ContactsView />}></Route>
+        </Route>
+      </Routes>
+    </>
   );
 };
 
 export { App };
+
+/**
+ * 
+Додай маршрутизацію та кілька сторінок:
+/register - публічний маршрут реєстрації нового користувача з формою
+/login - публічний маршрут логіна існуючого користувача з формою
+/contacts - приватний маршрут для роботи з колекцією контактів користувача
+ */
