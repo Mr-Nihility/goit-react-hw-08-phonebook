@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
 
-import s from './Container.module.css';
 //--------------------------------------------//
 const Container = ({ title, children }) => {
   return (
