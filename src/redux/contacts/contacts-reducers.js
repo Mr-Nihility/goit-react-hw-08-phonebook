@@ -1,25 +1,42 @@
-import { addUser, deleteUser, filterUser } from './contscts-actions';
+import { addUser, deleteUser, filterUser, getUsers } from './contscts-actions';
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 //----------------------------------------------------------------//
-const initContacts = [
-  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-];
 
-const itemReducer = createReducer(initContacts, {
-  [addUser.type]: (state, { payload }) => [...state, payload],
-  [deleteUser.type]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+const itemReducer = createReducer([], {
+  [getUsers.fulfilled]: (_, { payload }) => payload,
+  [addUser.fulfilled]: (_, { payload }) => payload,
+  [deleteUser.fulfilled]: (_, { payload }) => payload,
 });
 
 const filterReducer = createReducer('', {
   [filterUser.type]: (_, { payload }) => payload,
 });
 
+const errorReducer = createReducer('', {
+  [getUsers.rejected]: (_, { payload }) => payload,
+  [addUser.rejected]: (_, { payload }) => payload,
+  [deleteUser.rejected]: (_, { payload }) => payload,
+  [getUsers.pending]: () => '',
+  [addUser.pending]: () => '',
+  [deleteUser.pending]: () => '',
+});
+
+const loadingReducer = createReducer(false, {
+  [getUsers.pending]: () => true,
+  [getUsers.fulfilled]: () => false,
+  [getUsers.rejected]: () => false,
+  [addUser.pending]: () => true,
+  [addUser.fulfilled]: () => false,
+  [addUser.rejected]: () => false,
+  [deleteUser.pending]: () => true,
+  [deleteUser.fulfilled]: () => false,
+  [deleteUser.rejected]: () => false,
+});
+
 export const contactsReducer = combineReducers({
   items: itemReducer,
   filter: filterReducer,
+  error: errorReducer,
+  isLoading: loadingReducer,
 });

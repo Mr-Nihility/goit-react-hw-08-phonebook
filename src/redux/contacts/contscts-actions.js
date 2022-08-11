@@ -1,9 +1,10 @@
-import { ADD, FILTER, DELETE } from './contacts-types';
-import { createAction } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+
 //-------------------------------------------------------------//
 
-export const addUser = createAction(ADD);
+export const getUsers = createAsyncThunk('contacts/get', async () => {});
+export const addUser = createAsyncThunk('contacts/add', async contact => {});
 
-export const deleteUser = createAction(DELETE);
+export const deleteUser = createAsyncThunk('contacts/delete', async id => {});
 
-export const filterUser = createAction(FILTER);
+export const filterUser = createAction('contacts/filter');

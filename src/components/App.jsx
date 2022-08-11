@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ContactsView } from 'views/ContactsView/ContactsView';
 import { LoginView } from 'views/LoginView/LoginView';
@@ -5,8 +6,10 @@ import { RegistrationView } from 'views/RegistrationView/RegistrationView';
 import { LayOut } from './Layout/Layout';
 
 //--------------------------------------------------------------------//
-
+//{name: 'Vova Roman', email: 'test@asd.com', password: 'test12345912'}
 const App = () => {
+  useEffect(() => {}, []);
+
   return (
     <>
       <Routes>

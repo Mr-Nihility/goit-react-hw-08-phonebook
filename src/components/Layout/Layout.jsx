@@ -6,10 +6,15 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { Outlet, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getIsLogin, getUserName } from 'redux/auth/auth-selectors';
 
 //------------------------------------------------------//
 
 function LayOut() {
+  const isLogin = useSelector(getIsLogin);
+  const name = useSelector(getUserName);
+  console.log(name, isLogin);
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -28,11 +33,22 @@ function LayOut() {
                 Contacts
               </NavLink>
             </Typography>
-            <Button color="inherit">LogOut</Button>
-            <NavLink to={'/goit-react-hw-08-phonebook/login'}>LogIn</NavLink>
-            <NavLink to={'/goit-react-hw-08-phonebook/register'}>
-              Sing In
-            </NavLink>
+            {isLogin && (
+              <>
+                <b>Hello, {name} .Glad to see you!!!</b>
+                <Button color="inherit">LogOut</Button>
+              </>
+            )}
+            {!isLogin && (
+              <>
+                <NavLink to={'/goit-react-hw-08-phonebook/login'}>
+                  LogIn
+                </NavLink>
+                <NavLink to={'/goit-react-hw-08-phonebook/register'}>
+                  Sing In
+                </NavLink>
+              </>
+            )}
           </Toolbar>
         </AppBar>
         <Outlet />
