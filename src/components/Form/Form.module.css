@@ -1,0 +1,35 @@
+.form {
+  padding: 20px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+}
+.label {
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 500px;
+}
+:global(.input) {
+  height: 60px;
+  border-radius: 6px;
+  font-size: 26px;
+}
+:global(.btn) {
+  font-size: 30px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background: blue;
+  color: #fff;
+  border-radius: 6px;
+  background: rgba(83, 21, 247, 0.8);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.9px);
+
+  border: 1px solid rgba(81, 21, 247, 0.934);
+  /* height: 30px; */
+}

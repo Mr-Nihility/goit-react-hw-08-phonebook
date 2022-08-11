@@ -1,0 +1,7 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(243, 218, 6, 0.91);
+}
