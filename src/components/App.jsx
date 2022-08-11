@@ -27,7 +27,7 @@ const App = () => {
           <Route path="contacts" element={<ContactsView />}></Route>
         </Route>
       </Routes>
-      <ToastContainer autoClose={2000} />
+      <ToastContainer autoClose={2000} theme="colored" />
     </>
   );
 };

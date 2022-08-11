@@ -7,7 +7,7 @@ import axios from 'axios';
 export const getUsers = createAsyncThunk('contacts/get', async () => {
   try {
     const { data } = await axios.get('/contacts');
-    toast.success('done');
+    toast.success('We get your contacts!');
     return data;
   } catch (error) {
     console.log(error);
@@ -19,7 +19,7 @@ export const addUser = createAsyncThunk('contacts/add', async contact => {
     await axios.post('/contacts', contact);
 
     const { data } = await axios.get('/contacts');
-    toast.success('done');
+    toast.success('Aded!');
     return data;
   } catch (error) {
     console.log(error);
@@ -32,7 +32,7 @@ export const deleteUser = createAsyncThunk('contacts/delete', async id => {
     await axios.delete(`/contacts/${id}`);
 
     const { data } = await axios.get('/contacts');
-    toast.success('done');
+    toast.success('Deleted!');
     return data;
   } catch (error) {
     console.log(error);

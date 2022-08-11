@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addUser } from 'redux/contacts/contscts-operations';
 import { itemsSelector } from 'redux/contacts/contacts-selectors';
 import { Button } from '@mui/material';
+import { toast } from 'react-toastify';
 
 //--------------------------------------------------------------//
 
@@ -32,7 +33,7 @@ const Form = () => {
     e.preventDefault();
     const id = nanoid();
     if (!name || !number) {
-      alert('Please, fill all fields');
+      toast.warn('Please, fill all fields');
       return;
     }
     const inContacts = contacts.some(
@@ -40,7 +41,7 @@ const Form = () => {
     );
 
     if (inContacts) {
-      alert(`${name} is already in contacts`);
+      toast.warn(`${name} is already in contacts`);
       return;
     }
 
