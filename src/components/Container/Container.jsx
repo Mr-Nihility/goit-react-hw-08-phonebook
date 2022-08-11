@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
+import { Box, Typography } from '@mui/material';
 
 import s from './Container.module.css';
 //--------------------------------------------//
 const Container = ({ title, children }) => {
   return (
-    <div className={s.container}>
-      <h2>{title}</h2>
+    <Box>
+      <Typography variant="h2" gutterBottom component="h2">
+        {title}
+      </Typography>
       {children}
-    </div>
+    </Box>
   );
 };
 
