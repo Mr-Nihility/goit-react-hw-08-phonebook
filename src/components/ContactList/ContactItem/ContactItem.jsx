@@ -1,19 +1,32 @@
-import { Button, CardContent, Typography } from '@mui/material';
+import { Button, Typography, TableCell, TableRow } from '@mui/material';
 import PropTypes from 'prop-types';
-import { Avatar } from '@mui/material';
+import Avatar from 'react-avatar';
 //----------------------------------------------------//
-const ContactItem = ({ name, phone, onDelete, id }) => {
+const ContactItem = ({ name, phone, onDelete, id, index }) => {
   return (
-    <li>
-      <CardContent sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Avatar sx={{ width: 56, height: 56 }} />
+    <TableRow>
+      <TableCell>
+        <Typography variant="h3" gutterBottom component="p">
+          {index + 1}
+        </Typography>
+      </TableCell>
+      <TableCell>
+        <Avatar name={name} size={60} round={true} />
+      </TableCell>
+      <TableCell>
         <Typography variant="h3" gutterBottom component="p">
           {name}
         </Typography>
+      </TableCell>
+
+      <TableCell>
         <Typography variant="h3" gutterBottom component="p">
           {phone}
         </Typography>
+      </TableCell>
+      <TableCell>
         <Button
+          sx={{ fontSize: '24px' }}
           size="large"
           variant="contained"
           type="button"
@@ -21,8 +34,8 @@ const ContactItem = ({ name, phone, onDelete, id }) => {
         >
           Delete
         </Button>
-      </CardContent>
-    </li>
+      </TableCell>
+    </TableRow>
   );
 };
 ContactItem.propTypes = {
@@ -30,6 +43,7 @@ ContactItem.propTypes = {
   phone: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export { ContactItem };

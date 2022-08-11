@@ -11,8 +11,8 @@ const ContactsView = () => {
       <Container title="Phonebook">
         <Form />
       </Container>
+      <Filter />
       <Container title="Contacts">
-        <Filter />
         <ContactList />
       </Container>
     </>

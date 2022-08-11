@@ -4,6 +4,7 @@ import s from './Form.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUser } from 'redux/contacts/contscts-operations';
 import { itemsSelector } from 'redux/contacts/contacts-selectors';
+import { Button } from '@mui/material';
 
 //--------------------------------------------------------------//
 
@@ -76,9 +77,14 @@ const Form = () => {
           required
         />
       </label>
-      <button type="submit" className="btn">
+      <Button
+        sx={{ fontSize: '24px' }}
+        size="large"
+        variant="contained"
+        type="submit"
+      >
         Add contact
-      </button>
+      </Button>
     </form>
   );
 };

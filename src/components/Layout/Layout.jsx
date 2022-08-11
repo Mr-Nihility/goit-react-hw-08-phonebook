@@ -9,7 +9,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsLogin, getUserName } from 'redux/auth/auth-selectors';
 import { logOut } from 'redux/auth/auth-operations';
-
+import Avatar from 'react-avatar';
 //------------------------------------------------------//
 
 function LayOut() {
@@ -40,7 +40,15 @@ function LayOut() {
             </Typography>
             {isLogin && (
               <>
-                <b>Hello, {name} .Glad to see you!!!</b>
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  component="p"
+                  sx={{ m: 2 }}
+                >
+                  Hello, {name} .Glad to see you!!!
+                </Typography>
+                <Avatar name={name} size={45} round={true}></Avatar>
                 <Button color="inherit" onClick={handlerLogout}>
                   LogOut
                 </Button>
