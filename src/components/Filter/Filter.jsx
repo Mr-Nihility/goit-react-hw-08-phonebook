@@ -21,7 +21,7 @@ const Filter = () => {
           className="input"
         />
       </label>
-      <NavLink to="/goit-react-hw-08-phonebook/contacts">
+      <NavLink to="/goit-react-hw-08-phonebook/contacts" className={s.link}>
         <KeyboardArrowUpIcon sx={{ fontSize: 60, color: 'blue' }} />
       </NavLink>
     </div>
