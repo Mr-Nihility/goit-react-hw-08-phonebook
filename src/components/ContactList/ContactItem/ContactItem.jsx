@@ -1,6 +1,7 @@
 import { Button, Typography, TableCell, TableRow } from '@mui/material';
 import PropTypes from 'prop-types';
 import Avatar from 'react-avatar';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 //----------------------------------------------------//
 const ContactItem = ({ name, phone, onDelete, id, index }) => {
   return (
@@ -32,7 +33,7 @@ const ContactItem = ({ name, phone, onDelete, id, index }) => {
           type="button"
           onClick={() => onDelete(id)}
         >
-          Delete
+          <DeleteForeverIcon sx={{ fontSize: 40, color: 'white' }} />
         </Button>
       </TableCell>
     </TableRow>

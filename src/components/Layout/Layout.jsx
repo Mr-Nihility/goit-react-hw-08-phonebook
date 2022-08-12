@@ -10,6 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIsLogin, getUserName } from 'redux/auth/auth-selectors';
 import { logOut } from 'redux/auth/auth-operations';
 import Avatar from 'react-avatar';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 //------------------------------------------------------//
 
 function LayOut() {
@@ -29,45 +34,59 @@ function LayOut() {
           minHeight: '100vh',
         }}
       >
-        <AppBar position="static" sx={{ width: '300px' }}>
-          <Toolbar sx={{ display: 'flex', flexDirection: 'column' }}>
+        <AppBar
+          position="fixed"
+          sx={{ width: '300px', height: '100vh', top: 0, left: 0 }}
+        >
+          <Toolbar
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '45px',
+              marginTop: '100px',
+            }}
+          >
             {isLogin && (
               <>
+                <Avatar name={name} size={80} round={true}></Avatar>
                 <Typography
                   variant="h5"
                   gutterBottom
                   component="p"
                   sx={{ m: 2 }}
                 >
-                  Hello, {name} !!!
+                  {name}
                 </Typography>
                 <img
                   src="http://img.combats.com/i/smile/gangam.gif"
                   alt="s"
                   width={40}
                 />
-                <Avatar name={name} size={45} round={true}></Avatar>
+
                 <Button color="inherit" onClick={handlerLogout}>
-                  LogOut
+                  <LogoutIcon sx={{ fontSize: 40, color: 'white' }} />
                 </Button>
               </>
             )}
             {!isLogin && (
               <>
                 <NavLink to={'/goit-react-hw-08-phonebook/login'}>
-                  LogIn
+                  <LoginIcon sx={{ fontSize: 40, color: 'white' }} />
                 </NavLink>
                 <NavLink to={'/goit-react-hw-08-phonebook/register'}>
-                  Sing In
+                  <AppRegistrationIcon sx={{ fontSize: 40, color: 'white' }} />
                 </NavLink>
               </>
             )}
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {/* <NavLink to={'/'}>Home</NavLink> */}
-              <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
-                Contacts
-              </NavLink>
-            </Typography>
+
+            <NavLink to={'/goit-react-hw-08-phonebook/'}>
+              <HomeRoundedIcon sx={{ fontSize: 40, color: 'white' }} />
+            </NavLink>
+            <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
+              <ImportContactsRoundedIcon
+                sx={{ fontSize: 40, color: 'white' }}
+              />
+            </NavLink>
           </Toolbar>
         </AppBar>
         <Box sx={{ flexGrow: 1 }}>

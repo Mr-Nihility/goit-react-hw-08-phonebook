@@ -12,6 +12,10 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { Box } from '@mui/material';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
+import HomeView from 'views/HomeView/HomeView';
+import { Filter } from './Filter/Filter';
+import { Form } from './Form/Form';
+import { Container } from './Container/Container';
 //--------------------------------------------------------------------//
 //{name: 'Vova Roman', email: 'test@asd.com', password: 'test12345912'}
 
@@ -29,6 +33,7 @@ const App = () => {
       <Box sx={{ height: '100vh', width: '100vw' }}>
         <Routes>
           <Route path="/goit-react-hw-08-phonebook/" element={<LayOut />}>
+            <Route index element={<HomeView />} />
             <Route
               path="register"
               element={
@@ -52,7 +57,17 @@ const App = () => {
                   <ContactsView />
                 </PrivateRoute>
               }
-            ></Route>
+            >
+              <Route
+                path="add"
+                element={
+                  <Container title="Phonebook">
+                    <Form />
+                  </Container>
+                }
+              ></Route>
+              <Route path="search" element={<Filter />}></Route>
+            </Route>
           </Route>
         </Routes>
         <ToastContainer autoClose={2000} theme="colored" />
