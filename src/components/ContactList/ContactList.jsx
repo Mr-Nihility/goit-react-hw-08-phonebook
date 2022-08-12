@@ -14,18 +14,21 @@ import {
   itemsSelector,
 } from 'redux/contacts/contacts-selectors';
 import { useEffect } from 'react';
+import { getIsLogin } from 'redux/auth/auth-selectors';
 //----------------------------------------------------------------//
 
 const ContactList = () => {
   const items = useSelector(itemsSelector);
   const filter = useSelector(filterSelector);
   const dispatch = useDispatch();
+
+  const isLogin = useSelector(getIsLogin);
   const contacts = items?.filter(({ name }) =>
     name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
   );
   useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+    isLogin && dispatch(getUsers());
+  }, [dispatch, isLogin]);
 
   const deleteContact = id => {
     dispatch(deleteUser(id));

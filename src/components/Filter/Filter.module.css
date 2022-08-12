@@ -1,7 +1,11 @@
 .label {
-  font-size: 26px;
+  display: block;
+  margin: 0 auto;
+  max-width: 500px;
+  font-size: 30px;
   display: flex;
   flex-direction: column;
+  gap: 15px;
   padding: 20px 10px;
   border-radius: 16px;
 }

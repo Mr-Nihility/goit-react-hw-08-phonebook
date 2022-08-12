@@ -7,7 +7,7 @@ import { Form } from 'components/Form/Form';
 //--------------------------------------------//
 const ContactsView = () => {
   return (
-    <>
+    <div>
       <Container title="Phonebook">
         <Form />
       </Container>
@@ -15,7 +15,7 @@ const ContactsView = () => {
       <Container title="Contacts">
         <ContactList />
       </Container>
-    </>
+    </div>
   );
 };
 

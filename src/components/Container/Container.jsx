@@ -4,7 +4,14 @@ import { Box, Typography } from '@mui/material';
 //--------------------------------------------//
 const Container = ({ title, children }) => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Typography variant="h2" gutterBottom component="h2">
         {title}
       </Typography>

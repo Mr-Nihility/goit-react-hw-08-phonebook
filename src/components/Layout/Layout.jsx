@@ -22,22 +22,15 @@ function LayOut() {
   };
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            ></IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {/* <NavLink to={'/'}>Home</NavLink> */}
-              <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
-                Contacts
-              </NavLink>
-            </Typography>
+      <Box
+        sx={{
+          flexDirection: 'row',
+          display: 'flex',
+          minHeight: '100vh',
+        }}
+      >
+        <AppBar position="static" sx={{ width: '300px' }}>
+          <Toolbar sx={{ display: 'flex', flexDirection: 'column' }}>
             {isLogin && (
               <>
                 <Typography
@@ -46,8 +39,13 @@ function LayOut() {
                   component="p"
                   sx={{ m: 2 }}
                 >
-                  Hello, {name} .Glad to see you!!!
+                  Hello, {name} !!!
                 </Typography>
+                <img
+                  src="http://img.combats.com/i/smile/gangam.gif"
+                  alt="s"
+                  width={40}
+                />
                 <Avatar name={name} size={45} round={true}></Avatar>
                 <Button color="inherit" onClick={handlerLogout}>
                   LogOut
@@ -64,9 +62,17 @@ function LayOut() {
                 </NavLink>
               </>
             )}
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              {/* <NavLink to={'/'}>Home</NavLink> */}
+              <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
+                Contacts
+              </NavLink>
+            </Typography>
           </Toolbar>
         </AppBar>
-        <Outlet />
+        <Box sx={{ flexGrow: 1 }}>
+          <Outlet />
+        </Box>
       </Box>
     </>
   );
