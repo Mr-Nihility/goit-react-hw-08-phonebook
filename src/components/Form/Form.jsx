@@ -90,7 +90,7 @@ const Form = () => {
         Add contact
       </Button>
 
-      <NavLink to="/goit-react-hw-08-phonebook/contacts">
+      <NavLink to="/goit-react-hw-08-phonebook/contacts" className={s.linkup}>
         <KeyboardArrowUpIcon sx={{ fontSize: 60, color: 'blue' }} />
       </NavLink>
     </form>

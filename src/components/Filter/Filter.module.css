@@ -10,7 +10,8 @@
   border-radius: 16px;
 }
 
-.link {
+.linkup {
+  width: 60px;
   display: block;
   margin: 0 auto;
 }
