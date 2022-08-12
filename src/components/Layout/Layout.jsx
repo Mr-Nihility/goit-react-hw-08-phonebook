@@ -50,7 +50,7 @@ function LayOut() {
               <>
                 <Avatar name={name} size={80} round={true}></Avatar>
                 <Typography
-                  variant="h5"
+                  variant="h4"
                   gutterBottom
                   component="p"
                   sx={{ m: 2 }}
@@ -58,35 +58,35 @@ function LayOut() {
                   {name}
                 </Typography>
                 <img
-                  src="http://img.combats.com/i/smile/gangam.gif"
+                  src="http://img.combats.com/i/smile/horse.gif"
                   alt="s"
-                  width={40}
+                  width={80}
                 />
 
                 <Button color="inherit" onClick={handlerLogout}>
                   <LogoutIcon sx={{ fontSize: 40, color: 'white' }} />
                 </Button>
-              </>
-            )}
-            {!isLogin && (
-              <>
-                <NavLink to={'/goit-react-hw-08-phonebook/login'}>
-                  <LoginIcon sx={{ fontSize: 40, color: 'white' }} />
-                </NavLink>
-                <NavLink to={'/goit-react-hw-08-phonebook/register'}>
-                  <AppRegistrationIcon sx={{ fontSize: 40, color: 'white' }} />
+                <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
+                  <ImportContactsRoundedIcon
+                    sx={{ fontSize: 40, color: 'white' }}
+                  />
                 </NavLink>
               </>
             )}
-
             <NavLink to={'/goit-react-hw-08-phonebook/'}>
               <HomeRoundedIcon sx={{ fontSize: 40, color: 'white' }} />
             </NavLink>
-            <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
-              <ImportContactsRoundedIcon
-                sx={{ fontSize: 40, color: 'white' }}
-              />
-            </NavLink>
+
+            {!isLogin && (
+              <>
+                <NavLink to={'/goit-react-hw-08-phonebook/register'}>
+                  <AppRegistrationIcon sx={{ fontSize: 40, color: 'white' }} />
+                </NavLink>
+                <NavLink to={'/goit-react-hw-08-phonebook/login'}>
+                  <LoginIcon sx={{ fontSize: 40, color: 'white' }} />
+                </NavLink>
+              </>
+            )}
           </Toolbar>
         </AppBar>
         <Box sx={{ flexGrow: 1 }}>

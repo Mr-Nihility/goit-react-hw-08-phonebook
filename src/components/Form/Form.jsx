@@ -6,6 +6,8 @@ import { addUser } from 'redux/contacts/contscts-operations';
 import { itemsSelector } from 'redux/contacts/contacts-selectors';
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { NavLink } from 'react-router-dom';
 
 //--------------------------------------------------------------//
 
@@ -78,6 +80,7 @@ const Form = () => {
           required
         />
       </label>
+
       <Button
         sx={{ fontSize: '24px' }}
         size="large"
@@ -86,6 +89,10 @@ const Form = () => {
       >
         Add contact
       </Button>
+
+      <NavLink to="/goit-react-hw-08-phonebook/contacts">
+        <KeyboardArrowUpIcon sx={{ fontSize: 60, color: 'blue' }} />
+      </NavLink>
     </form>
   );
 };

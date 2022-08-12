@@ -16,6 +16,7 @@ import HomeView from 'views/HomeView/HomeView';
 import { Filter } from './Filter/Filter';
 import { Form } from './Form/Form';
 import { Container } from './Container/Container';
+import NotFound from './NotFound/NotFound';
 //--------------------------------------------------------------------//
 //{name: 'Vova Roman', email: 'test@asd.com', password: 'test12345912'}
 
@@ -30,7 +31,17 @@ const App = () => {
 
   return (
     <>
-      <Box sx={{ height: '100vh', width: '100vw' }}>
+      <Box
+        sx={{
+          height: '100vh',
+          width: '100vw',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '45px',
+          marginTop: '100px',
+          margin: '0 auto',
+        }}
+      >
         <Routes>
           <Route path="/goit-react-hw-08-phonebook/" element={<LayOut />}>
             <Route index element={<HomeView />} />
@@ -69,6 +80,7 @@ const App = () => {
               <Route path="search" element={<Filter />}></Route>
             </Route>
           </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <ToastContainer autoClose={2000} theme="colored" />
       </Box>
