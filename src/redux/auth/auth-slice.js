@@ -8,6 +8,7 @@ const initialState = {
   },
   token: '',
   isLogin: false,
+  isFetching: false,
 };
 const authSlice = createSlice({
   name: 'auth',
@@ -29,9 +30,18 @@ const authSlice = createSlice({
       state.user = { name: '', email: '' };
       state.isLogin = false;
     },
+    [getRefresh.pending]: (state, { payload }) => {
+      state.isLogin = false;
+      state.isFetching = true;
+    },
     [getRefresh.fulfilled]: (state, { payload }) => {
       state.user = payload;
       state.isLogin = true;
+      state.isFetching = false;
+    },
+    [getRefresh.rejected]: (state, { payload }) => {
+      state.isLogin = false;
+      state.isFetching = false;
     },
   },
 });

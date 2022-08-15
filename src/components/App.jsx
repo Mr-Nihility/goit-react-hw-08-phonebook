@@ -6,7 +6,7 @@ import { ContactsView } from 'views/ContactsView/ContactsView';
 import { LoginView } from 'views/LoginView/LoginView';
 import { RegistrationView } from 'views/RegistrationView/RegistrationView';
 import { LayOut } from './Layout/Layout';
-import { getToken } from 'redux/auth/auth-selectors';
+import { getStatusFetch, getToken } from 'redux/auth/auth-selectors';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Box } from '@mui/material';
@@ -17,13 +17,15 @@ import { Filter } from './Filter/Filter';
 import { Form } from './Form/Form';
 import { Container } from './Container/Container';
 import NotFound from './NotFound/NotFound';
+import { ThreeDots } from 'react-loader-spinner';
+// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 //--------------------------------------------------------------------//
 //{name: 'Vova Roman', email: 'test@asd.com', password: 'test12345912'}
 
 const App = () => {
   const dispatch = useDispatch();
   const accountToken = useSelector(getToken);
-  // const isLogin = useSelector(getIsLogin);
+  const isFetching = useSelector(getStatusFetch);
 
   useEffect(() => {
     dispatch(getRefresh());
@@ -31,59 +33,77 @@ const App = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          height: '100vh',
-          width: '100vw',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '45px',
-          marginTop: '100px',
-          margin: '0 auto',
-        }}
-      >
-        <Routes>
-          <Route path="/goit-react-hw-08-phonebook/" element={<LayOut />}>
-            <Route index element={<HomeView />} />
-            <Route
-              path="register"
-              element={
-                <PublicRoute>
-                  <RegistrationView />
-                </PublicRoute>
-              }
-            ></Route>
-            <Route
-              path="login"
-              element={
-                <PublicRoute>
-                  <LoginView />
-                </PublicRoute>
-              }
-            ></Route>
-            <Route
-              path="contacts"
-              element={
-                <PrivateRoute>
-                  <ContactsView />
-                </PrivateRoute>
-              }
-            >
+      {isFetching ? (
+        <ThreeDots
+          height="200"
+          width="400"
+          radius="20"
+          color="blue"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{
+            margin: '500px auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          wrapperClassName=""
+          visible={true}
+        />
+      ) : (
+        <Box
+          sx={{
+            height: '100vh',
+            width: '100vw',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '45px',
+            marginTop: '100px',
+            margin: '0 auto',
+          }}
+        >
+          <Routes>
+            <Route path="/goit-react-hw-08-phonebook/" element={<LayOut />}>
+              <Route index element={<HomeView />} />
               <Route
-                path="add"
+                path="register"
                 element={
-                  <Container title="Add contact">
-                    <Form />
-                  </Container>
+                  <PublicRoute>
+                    <RegistrationView />
+                  </PublicRoute>
                 }
               ></Route>
-              <Route path="search" element={<Filter />}></Route>
+              <Route
+                path="login"
+                element={
+                  <PublicRoute>
+                    <LoginView />
+                  </PublicRoute>
+                }
+              ></Route>
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute>
+                    <ContactsView />
+                  </PrivateRoute>
+                }
+              >
+                <Route
+                  path="add"
+                  element={
+                    <Container title="Add contact">
+                      <Form />
+                    </Container>
+                  }
+                ></Route>
+                <Route path="search" element={<Filter />}></Route>
+              </Route>
             </Route>
-          </Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
-        <ToastContainer autoClose={2000} theme="colored" />
-      </Box>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+          <ToastContainer autoClose={2000} theme="colored" />
+        </Box>
+      )}
     </>
   );
 };

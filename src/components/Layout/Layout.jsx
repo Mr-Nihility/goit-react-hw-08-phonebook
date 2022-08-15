@@ -34,10 +34,7 @@ function LayOut() {
           minHeight: '100vh',
         }}
       >
-        <AppBar
-          position="fixed"
-          sx={{ width: '300px', height: '100vh', top: 0, left: 0 }}
-        >
+        <AppBar sx={{ width: '300px', height: '100vh', top: 0, left: 0 }}>
           <Toolbar
             sx={{
               display: 'flex',
