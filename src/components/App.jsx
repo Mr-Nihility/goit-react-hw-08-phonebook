@@ -18,7 +18,6 @@ import { Form } from './Form/Form';
 import { Container } from './Container/Container';
 import NotFound from './NotFound/NotFound';
 import { ThreeDots } from 'react-loader-spinner';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 //--------------------------------------------------------------------//
 //{name: 'Vova Roman', email: 'test@asd.com', password: 'test12345912'}
 
